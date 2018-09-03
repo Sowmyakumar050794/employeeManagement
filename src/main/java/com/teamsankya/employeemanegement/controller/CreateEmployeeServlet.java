@@ -8,11 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.teamsankya.employeemanagement.dao.EmployeeManagementDAO;
 import com.teamsankya.employeemanagement.dto.EmpAddrInfo;
 import com.teamsankya.employeemanagement.dto.EmpBasicInfo;
 import com.teamsankya.employeemanagement.dto.EmpCompInfo;
 import com.teamsankya.employeemanagement.dto.EmpLstCmpInfo;
 import com.teamsankya.employeemanagement.dto.EmpPersonalInfo;
+import com.teamsankya.employeemanagement.dto.EmployeeBean;
+import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
 
 
 public class CreateEmployeeServlet extends HttpServlet {
@@ -50,19 +53,19 @@ public class CreateEmployeeServlet extends HttpServlet {
 		per.setCellNo(Long.parseLong(req.getParameter("mob_num")));
 		per.setDob(Date.parse(req.getParameter("DOB")));
 	
-
 		
-
-
-		MasterBean bean = new MasterBean();
-		bean.setInfo(info);
+		EmployeeBean bean = new EmployeeBean();
 		bean.setAddr(addr);
-		bean.setGard(gard);
+		bean.setBasic(info);
+		bean.setComp(comp);
+		bean.setLstcmp(last);
+		bean.setPersonal(per);
 		
-		StudentDAO dao = StudentServiceManager
+		
+		EmployeeManagementDAO dao = EmployeeServiceManager
 				.getInstence()
 				.daoGenarater();
-		dao.createStudent(bean);
+		dao.createEmployee(bean);
 		req.getRequestDispatcher("createResponse.jsp")
 		.forward(req, resp);
 
