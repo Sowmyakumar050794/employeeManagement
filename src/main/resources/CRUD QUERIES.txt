@@ -1,0 +1,23 @@
+INSERT INTO employeebasic_info VALUES(?,?,?);
+INSERT INTO employeeaddress_info VALUES(?,?,?,?,?);
+INSERT INTO employeepersonal_info VALUES(?,?,?,?);
+INSERT INTO employeelastcompany_info VALUES(?,?,?);
+INSERT INTO employeecompany_info VALUES(?,?,?,?);
+
+SELECT * FROM employeebasic_info WHERE EID=?;
+SELECT * FROM employeeaddress_info WHERE EID=?;
+SELECT * FROM employeepersonal_info WHERE EID=?;
+SELECT * FROM employeelastcompany_info WHERE EID=?;
+SELECT * FROM employeecompany_info WHERE EID=?;
+
+DELETE FROM employeebasic_info WHERE EID=?;
+DELETE FROM employeeaddress_info WHERE EID=?;
+DELETE FROM employeepersonal_info WHERE EID=?;
+DELETE FROM employeelastcompany_info WHERE EID=?;
+DELETE FROM employeecompany_info WHERE EID=?;
+
+UPDATE employeebasic_info SET FNAME=?,LNAME=? WHERE EID=?;
+UPDATE employeeaddress_info SET ADDR1=?,ADDR2=?,CITY=?,PINCODE=? WHERE EID=?;
+UPDATE employeepersonal_info SET EMAIL=?,MOB_NUM=?,DOB=? WHERE EID=?;
+UPDATE employeelastcompany_info SET EXP=?,LAST_COMP=? WHERE EID=?;
+UPDATE employeecompany_info SET DESIGNATION=?,DATE_OF_JOIN=?,CTC=? WHERE EID=?;
