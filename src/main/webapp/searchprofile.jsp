@@ -23,7 +23,7 @@
 			<tr></tr><tr></tr><tr></tr>
 			<tr>
 				<td><input type="submit" value="Search "/></td>
-				<td><input type="Submit" value="Reset"/></td>
+				<td><input type="reset" value="Reset"/></td>
 			</tr>
 		</table>
 			

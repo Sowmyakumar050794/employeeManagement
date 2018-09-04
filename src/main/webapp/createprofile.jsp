@@ -110,7 +110,7 @@
 						<table width="500">
 						    <tr>
 								<td>Address 1</td>
-								<td><input type="date" name="addr1" placeholder="Enter Address1" required="required" /></td>
+								<td><input type="text" name="addr1" placeholder="Enter Address1" required="required" /></td>
 							</tr>
 							<tr>
 								<td>Address 2</td>
