@@ -34,3 +34,13 @@ employeepersonal_info epi, employeelastcompany_info elci,
  select eid from employeebasic_info where fname=? or lname=?;
  select eid from employeepersonal_info where email=? or mob_num=?;
  select eid from employeecompany_info where designation=?;
+ 
+ -------------updated query-----------------
+ 
+ select eid from employeebasic_info bi, employeepersonal_info pi,employeecompany_info ci where bi.fname=? or bi.lname=?
+ or pi.email=? or pi.mob_num=? or ci.designation=?;
+ 
+ 
+ 
+ 
+ 
