@@ -11,6 +11,8 @@
   </welcome-file-list>
   
   
+  
+  
   <servlet>
     <servlet-name>create</servlet-name>
     <servlet-class>com.teamsankya.employeemanegement.controller.CreateEmployeeServlet</servlet-class>
@@ -19,4 +21,37 @@
     <servlet-name>create</servlet-name>
     <url-pattern>/create</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>get</servlet-name>
+    <servlet-class>com.teamsankya.employeemanegement.controller.GetEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>get</servlet-name>
+    <url-pattern>/get</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>delete</servlet-name>
+    <servlet-class>com.teamsankya.employeemanegement.controller.DeleteEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>delete</servlet-name>
+    <url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>update</servlet-name>
+    <servlet-class>com.teamsankya.employeemanegement.controller.UpdateEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>update</servlet-name>
+    <url-pattern>/update</url-pattern>
+  </servlet-mapping>
+  
+  
+  
 </web-app>
