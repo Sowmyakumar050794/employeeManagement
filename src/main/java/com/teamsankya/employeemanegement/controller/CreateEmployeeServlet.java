@@ -70,7 +70,7 @@ public class CreateEmployeeServlet extends HttpServlet {
 				.getInstence()
 				.daoGenarater();
 		dao.createEmployee(bean);
-		req.getRequestDispatcher("homepage1.jsp")
+		req.getRequestDispatcher("CreateEmployeeResponse.jsp")
 		.forward(req, resp);
 		
 	}

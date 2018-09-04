@@ -7,6 +7,7 @@ public interface EmployeeManagementDAO {
 	public EmployeeBean getEmployee(String id);
 	public EmployeeBean updateData(String id, EmployeeBean bean);
 	public void deleteEmployee(String id);
+	public String getEid(String input);
 	
 }
 
