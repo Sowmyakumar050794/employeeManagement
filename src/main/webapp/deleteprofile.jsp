@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="./deleteEmployee" method="get">
+<form action="./delete" method="post">
 		<fieldset title="Search">
 			<legend><B>Delete Employee Info</B></legend>
 			<BR/>
