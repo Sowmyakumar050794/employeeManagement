@@ -23,7 +23,7 @@ import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
 
 public class CreateEmployeeServlet extends HttpServlet {
 	
-	@SuppressWarnings("deprecation")
+	//@SuppressWarnings("deprecation")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -42,6 +42,7 @@ public class CreateEmployeeServlet extends HttpServlet {
 		EmpCompInfo comp = new EmpCompInfo();
 		comp.setId(req.getParameter("eid"));
 		comp.setDesignation(req.getParameter("designation"));
+		comp.setDoj(java.sql.Date.valueOf(req.getParameter("date_of_join")));
 		comp.setCtc(Integer.parseInt(req.getParameter("CTC")));
 		
 		EmpLstCmpInfo last = new EmpLstCmpInfo();
@@ -69,8 +70,9 @@ public class CreateEmployeeServlet extends HttpServlet {
 				.getInstence()
 				.daoGenarater();
 		dao.createEmployee(bean);
-		req.getRequestDispatcher("createResponse.jsp")
+		req.getRequestDispatcher("homepage1.jsp")
 		.forward(req, resp);
+		
 	}
 }
 
