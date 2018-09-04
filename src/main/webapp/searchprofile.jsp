@@ -7,14 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="./searchEmployee?search=" method="post">
+<form action="./searchEmployee?search=" method="get">
 		<fieldset title="Search">
 			<legend><B>Search By Employee Info</B></legend>
 			<BR/>
 			<table height="60%">
 			<tr>
 				<td>Search Employee  </td>
-				<td><input type="text" name="name" placeholder="search here"/></td>
+				<td><input type="text" name="search" placeholder="search here"/></td>
 			</tr>
 			
 				<!-- <td><B>NOTE:</B>  </td>
