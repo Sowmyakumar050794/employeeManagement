@@ -15,7 +15,7 @@ import com.teamsankya.employeemanagement.dto.EmployeeBean;
 public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 
 	@Override
-	public void createEmployee(EmployeeBean bean) {
+	public boolean createEmployee(EmployeeBean bean) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			try (Connection con = DriverManager
@@ -65,6 +65,7 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return false;
 
 	}
 
@@ -151,7 +152,7 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 		}
 
 		@Override
-		public void deleteEmployee(String id) {
+		public boolean deleteEmployee(String id) {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				try (Connection con = DriverManager
@@ -189,6 +190,7 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			return false;
 
 
 		}
