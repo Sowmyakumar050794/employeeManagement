@@ -7,6 +7,13 @@ public class EmpCompInfo {
 	
 	private String id ;
 	private String designation ;
+	private Date doj;
+	public Date getDoj() {
+		return doj;
+	}
+	public void setDoj(Date doj) {
+		this.doj = doj;
+	}
 	private int ctc ;
 	
 	
