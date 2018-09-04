@@ -81,7 +81,44 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 
 	@Override
 	public void deleteEmployee(String id) {
-		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			try (Connection con = DriverManager
+					.getConnection("jdbc:mysql://localhost:3306/employee_management?user=root&password=root")) {
+				con.setAutoCommit(false);
+				
+				try (PreparedStatement pstmt1 = con.prepareStatement("DELETE FROM employeebasic_info WHERE EID=? ");
+						PreparedStatement pstmt2 = con.prepareStatement("DELETE FROM employeeaddress_info WHERE EID=? ");
+						PreparedStatement pstmt3 = con
+								.prepareStatement("DELETE FROM employeepersonal_info WHERE EID=? ");
+						PreparedStatement pstmt4 = con.prepareStatement("DELETE FROM employeelastcompany_info WHERE EID=? ");
+						PreparedStatement pstmt5 = con.prepareStatement("DELETE FROM employeecompany_info WHERE EID=? ");
+						) {
+
+					pstmt1.setString(1, id);
+					pstmt2.setString(1, id);
+					pstmt3.setString(1, id);
+					pstmt4.setString(1, id);
+					pstmt5.setString(1, id);
+					int c = pstmt1.executeUpdate();
+					int c2 = pstmt2.executeUpdate();
+					int c3 = pstmt3.executeUpdate();
+					int c4 = pstmt4.executeUpdate();
+					int c5 = pstmt5.executeUpdate();
+					System.out.println(c);
+					System.out.println(c2);
+					System.out.println(c3);
+					System.out.println(c4);
+					System.out.println(c5);
+					con.commit();
+
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 
 	}
 
