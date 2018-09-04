@@ -2,10 +2,11 @@
 package com.teamsankya.employeemanegement.controller;
 
 import javax.servlet.http.HttpServlet;
+import java.sql.Date;
 
 import java.io.IOException;
-import java.util.Date;
 
+import javax.annotation.Generated;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
 
 public class CreateEmployeeServlet extends HttpServlet {
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -52,7 +54,10 @@ public class CreateEmployeeServlet extends HttpServlet {
 		per.setId((req.getParameter("eid")));
 		per.setEmail(req.getParameter("email"));
 		per.setCellNo(Long.parseLong(req.getParameter("mob_num")));
-		per.setDob(req.getParameter("DOB"));
+		per.setDob(java.sql.Date.valueOf(req.getParameter("DOB")));
+
+	
+
 
 		EmployeeBean bean = new EmployeeBean();
 		bean.setAddr(addr);
