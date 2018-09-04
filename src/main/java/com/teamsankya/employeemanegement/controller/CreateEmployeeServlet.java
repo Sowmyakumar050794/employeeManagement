@@ -1,5 +1,13 @@
 package com.teamsankya.employeemanegement.controller;
 
-public class CreateEmployeeServlet  {
+import javax.servlet.http.HttpServlet;
+
+public class CreateEmployeeServlet extends HttpServlet {
+	private void post() {
+		
+		
+		
+
+	}
 
 }

@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  
+  <servlet>
+    <servlet-name>create</servlet-name>
+    <servlet-class>com.teamsankya.employeemanegement.controller.CreateEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>create</servlet-name>
+    <url-pattern>/create</url-pattern>
+  </servlet-mapping>
 </web-app>
