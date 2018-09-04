@@ -6,7 +6,7 @@ public class EmpCompInfo {
 
 	
 	private String id ;
-	private String designantion ;
+	private String designation ;
 	private int ctc ;
 	
 	
@@ -18,11 +18,11 @@ public class EmpCompInfo {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getDesignantion() {
-		return designantion;
+	public String getDesignation() {
+		return designation;
 	}
-	public void setDesignantion(String designantion) {
-		this.designantion = designantion;
+	public void setDesignation(String designation) {
+		this.designation = designation;
 	}
 	public int getCtc() {
 		return ctc;
