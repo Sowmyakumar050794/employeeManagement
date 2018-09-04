@@ -23,7 +23,10 @@ public class GetEmpServlet extends HttpServlet {
 		/*String eid = dao.getEid(name);
 		EmployeeBean bean = dao.getEmployee(eid);
 		*/
-		EmployeeBean bean = dao.getEmployee(dao.getEid(name));
+		String eid = dao.getEid(name);
+		System.out.println(eid);
+		
+		EmployeeBean bean = dao.getEmployee(eid);
 		System.out.println(bean);
 		req.getRequestDispatcher("searchEmployeeResponse.jsp")
 		.forward(req, resp);

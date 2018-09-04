@@ -201,10 +201,10 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 				try (Connection con = DriverManager
 						.getConnection("jdbc:mysql://localhost:3306/employee_management?user=root&password=root")) {
 					con.setAutoCommit(false);
-					try(PreparedStatement pstmt1 = con.prepareStatement(" select eid from employeebasic_info where fname=? or lname=? or eid=? ");
-							PreparedStatement pstmt2 = con.prepareStatement("select eid from employeepersonal_info where email=? or mob_num=? ");
+					try(PreparedStatement pstmt1 = con.prepareStatement(" select * from employeebasic_info where fname=? or lname=? or eid=? ");
+							PreparedStatement pstmt2 = con.prepareStatement("select * from employeepersonal_info where email=? or mob_num=? ");
 							PreparedStatement pstmt3 = con
-									.prepareStatement("select eid from employeecompany_info where designation=? ");)
+									.prepareStatement("select * from employeecompany_info where designation=? ");)
 					{
 						pstmt1.setString(1, input);
 						pstmt1.setString(2, input);
@@ -216,7 +216,7 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 						
 						try (ResultSet rs1 = pstmt1.executeQuery();
 								ResultSet rs2 = pstmt2.executeQuery();
-								ResultSet rs3 = pstmt3.executeQuery()
+								ResultSet rs3 = pstmt3.executeQuery();
 								)
 						{
 							if(rs1.next()) {
