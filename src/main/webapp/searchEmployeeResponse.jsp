@@ -49,7 +49,7 @@
 		</tr>
 	</table>
 	<%}else { %>
-	<h1>Employee id does not exist</h1>
+	<h1>Employee  does not exist</h1>
 	<%} %>
 	<a href='./searchprofile.jsp'>Click here to search an employee</a>
 </body>

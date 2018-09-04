@@ -28,3 +28,9 @@ SELECT * FROM employeebasic_info ebi, employeeaddress_info eai,
 employeepersonal_info epi, employeelastcompany_info elci,
  employeecompany_info eci WHERE ebi.eid=eai.eid AND eai.eid=epi.eid AND epi.eid=elci.eid
  AND elci.eid=eci.eid AND eci.eid= ? ;
+ 
+ -------------serch query-----------------
+ 
+ select eid from employeebasic_info where fname=? or lname=?;
+ select eid from employeepersonal_info where email=? or mob_num=?;
+ select eid from employeecompany_info where designation=?;
