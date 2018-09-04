@@ -6,7 +6,6 @@ import java.sql.Date;
 
 import java.io.IOException;
 
-import javax.annotation.Generated;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -74,4 +73,4 @@ public class CreateEmployeeServlet extends HttpServlet {
 		.forward(req, resp);
 	}
 }
-//>>>>>>> branch 'master' of https://github.com/Sowmyakumar050794/employeemanagement.git
+
