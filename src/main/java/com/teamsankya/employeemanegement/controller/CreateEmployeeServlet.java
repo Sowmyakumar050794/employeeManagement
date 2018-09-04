@@ -52,7 +52,7 @@ public class CreateEmployeeServlet extends HttpServlet {
 		per.setId((req.getParameter("eid")));
 		per.setEmail(req.getParameter("email"));
 		per.setCellNo(Long.parseLong(req.getParameter("mob_num")));
-		per.setDob(Date.parse((req.getParameter("DOB"))));
+		per.setDob(req.getParameter("DOB"));
 
 		EmployeeBean bean = new EmployeeBean();
 		bean.setAddr(addr);
