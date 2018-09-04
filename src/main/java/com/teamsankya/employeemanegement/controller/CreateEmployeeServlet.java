@@ -56,6 +56,9 @@ public class CreateEmployeeServlet extends HttpServlet {
 		per.setCellNo(Long.parseLong(req.getParameter("mob_num")));
 		per.setDob(java.sql.Date.valueOf(req.getParameter("DOB")));
 
+	
+
+
 		EmployeeBean bean = new EmployeeBean();
 		bean.setAddr(addr);
 		bean.setBasic(info);
