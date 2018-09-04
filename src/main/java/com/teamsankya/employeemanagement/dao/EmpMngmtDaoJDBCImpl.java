@@ -3,8 +3,6 @@ package com.teamsankya.employeemanagement.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.Date;
-
 import com.teamsankya.employeemanagement.dto.EmployeeBean;
 
 public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
@@ -77,13 +75,13 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 
 	@Override
 	public EmployeeBean updateData(String id, EmployeeBean bean) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public void deleteEmployee(String id) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
