@@ -10,9 +10,6 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 
 	@Override
 	public void createEmployee(EmployeeBean bean) {
-
-
-
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			try (Connection con = DriverManager
@@ -45,7 +42,7 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 				
 				pstmt5.setString(1, bean.getComp().getId());
 				pstmt5.setString(2, bean.getComp().getDesignation());
-				pstmt5.setString(3, bean.getComp().getDoj());
+				pstmt5.setLong(3, bean.getComp().getDoj());
 				pstmt5.setLong(4, bean.getComp().getCtc());
 								
 				
@@ -53,6 +50,8 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 				boolean p1=pstmt1.execute();
 				boolean p2=pstmt2.execute();
 				boolean p3=pstmt3.execute();
+				boolean p4=pstmt4.execute();
+				boolean p5=pstmt5.execute();
 				System.out.println(p1+" "+p2+" "+p3);
 
 			}
