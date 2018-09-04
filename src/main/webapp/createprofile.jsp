@@ -130,7 +130,7 @@
 			</tr>
 		</table>
 		<BR>
-		<input type="Submit" value="Reset" />
+		<input type="reset" value="Reset" />
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="submit" value="Create Profile" /> 
 
