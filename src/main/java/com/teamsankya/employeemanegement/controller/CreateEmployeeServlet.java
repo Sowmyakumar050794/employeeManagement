@@ -69,4 +69,4 @@ public class CreateEmployeeServlet extends HttpServlet {
 		.forward(req, resp);
 	}
 }
-//>>>>>>> branch 'master' of https://github.com/Sowmyakumar050794/employeemanagement.git
+
