@@ -53,7 +53,7 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 				boolean p3=pstmt3.execute();
 				boolean p4=pstmt4.execute();
 				boolean p5=pstmt5.execute();
-				System.out.println(p1+" "+p2+" "+p3);
+				System.out.println(p1+" "+p2+" "+p3+" "+p4+" "+p5);
 
 			}
 		} catch (Exception e) {
@@ -70,7 +70,7 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 
 	@Override
 	public EmployeeBean getEmployee(String id) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
