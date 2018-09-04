@@ -52,14 +52,7 @@
     <url-pattern>/update</url-pattern>
   </servlet-mapping>
   
-   <servlet>
-    <servlet-name>get</servlet-name>
-    <servlet-class>com.teamsankya.employeemanegement.controller.GetEmpServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>get</servlet-name>
-    <url-pattern>/get</url-pattern>
-  </servlet-mapping>
+   
   
   
 </web-app>
