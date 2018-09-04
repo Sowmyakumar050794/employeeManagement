@@ -24,5 +24,7 @@ public class GetEmpServlet extends HttpServlet {
 		EmployeeBean bean = dao.getEmployee(eid);
 		*/
 		EmployeeBean bean = dao.getEmployee(dao.getEid(name));
+		req.getRequestDispatcher("searchEmployeeResponse.jsp")
+		.forward(req, resp);
 	}
 }
