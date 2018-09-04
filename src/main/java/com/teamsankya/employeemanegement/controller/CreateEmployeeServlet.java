@@ -23,6 +23,7 @@ import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
 
 public class CreateEmployeeServlet extends HttpServlet {
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
@@ -52,7 +53,7 @@ public class CreateEmployeeServlet extends HttpServlet {
 		per.setId((req.getParameter("eid")));
 		per.setEmail(req.getParameter("email"));
 		per.setCellNo(Long.parseLong(req.getParameter("mob_num")));
-		per.setDob(Date.parse((req.getParameter("DOB"))));
+		per.setDob(new Date(req.getParameter("DOB")));
 
 		EmployeeBean bean = new EmployeeBean();
 		bean.setAddr(addr);
