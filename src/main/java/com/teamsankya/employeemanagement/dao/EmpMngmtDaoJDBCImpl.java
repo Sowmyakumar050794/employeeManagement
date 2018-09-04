@@ -34,15 +34,16 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 				pstmt3.setString(1, bean.getPersonal().getId());
 				pstmt3.setString(2, bean.getPersonal().getEmail());
 				pstmt3.setLong(3, bean.getPersonal().getCellNo());
-				pstmt3.setString(4, bean.getPersonal().getDob());
+				pstmt3.setDate(4, bean.getPersonal().getDob());
 				
 				pstmt4.setString(1, bean.getLstcmp().getId());
 				pstmt4.setString(2, bean.getLstcmp().getExp());
-				pstmt4.setString(1, bean.getLstcmp().getLastComp());
+				pstmt4.setString(3, bean.getLstcmp().getLastComp());
+				
 				
 				pstmt5.setString(1, bean.getComp().getId());
 				pstmt5.setString(2, bean.getComp().getDesignation());
-				pstmt5.setLong(3, bean.getComp().getDoj());
+				pstmt5.setDate(3, bean.getComp().getDoj());
 				pstmt5.setLong(4, bean.getComp().getCtc());
 								
 				
