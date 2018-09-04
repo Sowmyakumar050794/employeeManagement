@@ -1,4 +1,7 @@
+
 package com.teamsankya.employeemanegement.controller;
+
+import javax.servlet.http.HttpServlet;
 
 import java.io.IOException;
 import java.util.Date;
@@ -28,14 +31,12 @@ public class CreateEmployeeServlet extends HttpServlet {
 		info.setLname(req.getParameter("lname"));
 		info.setId((req.getParameter("eid")));
 
-
 		EmpAddrInfo addr = new EmpAddrInfo();
 		addr.setId(req.getParameter("eid"));
 		addr.setAddr1(req.getParameter("addr1"));
 		addr.setAddr2(req.getParameter("addr2"));
 		addr.setCity(req.getParameter("city"));
 		addr.setPincode(Integer.parseInt(req.getParameter("pincode")));
-
 
 		EmpCompInfo comp = new EmpCompInfo();
 		comp.setId(req.getParameter("eid"));
@@ -60,15 +61,12 @@ public class CreateEmployeeServlet extends HttpServlet {
 		bean.setLstcmp(last);
 		bean.setPersonal(per);
 		
-		
 		EmployeeManagementDAO dao = EmployeeServiceManager
 				.getInstence()
 				.daoGenarater();
 		dao.createEmployee(bean);
 		req.getRequestDispatcher("createResponse.jsp")
 		.forward(req, resp);
-
-		
 	}
-
 }
+//>>>>>>> branch 'master' of https://github.com/Sowmyakumar050794/employeemanagement.git

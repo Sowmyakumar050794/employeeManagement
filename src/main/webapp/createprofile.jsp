@@ -9,7 +9,7 @@
 <html>
 <body>
 <div class="border">
-	<form action="./createProfile" method="post">
+	<form action="./create" method="post">
 		<table width="800">
 			<tr>
 				<td>
