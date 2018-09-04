@@ -3,7 +3,6 @@ package com.teamsankya.employeemanagement.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-
 import com.teamsankya.employeemanagement.dto.EmployeeBean;
 
 public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
@@ -38,12 +37,13 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 				
 				pstmt4.setString(1, bean.getLstcmp().getId());
 				pstmt4.setString(2, bean.getLstcmp().getExp());
-				pstmt4.setString(1, bean.getLstcmp().getLastComp());
+				pstmt4.setString(3, bean.getLstcmp().getLastComp());
+				
 				
 				pstmt5.setString(1, bean.getComp().getId());
 				pstmt5.setString(2, bean.getComp().getDesignation());
 				pstmt5.setDate(3, bean.getComp().getDoj());
-				pstmt5.setDate(4, bean.getComp().getCtc());
+				pstmt5.setLong(4, bean.getComp().getCtc());
 								
 				
 				
