@@ -195,6 +195,57 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO{
 
 		@Override
 		public String getEid(String input) {
+			String eid;
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				try (Connection con = DriverManager
+						.getConnection("jdbc:mysql://localhost:3306/employee_management?user=root&password=root")) {
+					con.setAutoCommit(false);
+					try(PreparedStatement pstmt1 = con.prepareStatement(" select eid from employeebasic_info where fname=? or lname=? ");
+							PreparedStatement pstmt2 = con.prepareStatement("select eid from employeepersonal_info where email=? or mob_num=? ");
+							PreparedStatement pstmt3 = con
+									.prepareStatement("select eid from employeecompany_info where designation=? ");)
+					{
+						pstmt1.setString(1, input);
+						pstmt1.setString(2, input);
+						pstmt2.setString(1, input);
+						pstmt2.setString(2, input);
+						pstmt3.setString(1, input);
+						
+						
+						try (ResultSet rs1 = pstmt1.executeQuery();
+								ResultSet rs2 = pstmt2.executeQuery();
+								ResultSet rs3 = pstmt3.executeQuery()
+								)
+						{
+							if(rs1.next()) {
+							eid=rs1.getString("eid");
+							return eid;
+							}
+							else if (rs2.next()) {
+								eid=rs2.getString("eid");
+								return eid;
+							}
+							else if (rs3.next()) {
+								eid=rs3.getString("eid");
+								return eid;
+								
+							}
+							else {
+								return null;
+							}
+							
+					}
+					}
+				}
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			finally {
+				
+			}
+			
 			return null;
 		}
 

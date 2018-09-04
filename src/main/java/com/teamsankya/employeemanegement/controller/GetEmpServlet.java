@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.teamsankya.employeemanagement.dao.EmployeeManagementDAO;
+import com.teamsankya.employeemanagement.dto.EmployeeBean;
 import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
 
 public class GetEmpServlet extends HttpServlet {
@@ -19,6 +20,9 @@ public class GetEmpServlet extends HttpServlet {
 		EmployeeManagementDAO dao = EmployeeServiceManager
 				.getInstence()
 				.daoGenarater();
-		dao.getEmployee(name);
+		/*String eid = dao.getEid(name);
+		EmployeeBean bean = dao.getEmployee(eid);
+		*/
+		EmployeeBean bean = dao.getEmployee(dao.getEid(name));
 	}
 }
