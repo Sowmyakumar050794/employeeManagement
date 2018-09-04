@@ -21,3 +21,10 @@ UPDATE employeeaddress_info SET ADDR1=?,ADDR2=?,CITY=?,PINCODE=? WHERE EID=?;
 UPDATE employeepersonal_info SET EMAIL=?,MOB_NUM=?,DOB=? WHERE EID=?;
 UPDATE employeelastcompany_info SET EXP=?,LAST_COMP=? WHERE EID=?;
 UPDATE employeecompany_info SET DESIGNATION=?,DATE_OF_JOIN=?,CTC=? WHERE EID=?;
+
+
+
+SELECT * FROM employeebasic_info ebi, employeeaddress_info eai, 
+employeepersonal_info epi, employeelastcompany_info elci,
+ employeecompany_info eci WHERE ebi.eid=eai.eid AND eai.eid=epi.eid AND epi.eid=elci.eid
+ AND elci.eid=eci.eid AND eci.eid= ? ;
