@@ -31,7 +31,7 @@
 							</tr>
 								<tr>
 								<td>First Name</td>
-								<td><input type="text" name="fname" placeholder="Enter first name" required="required" /></td>
+								<td><input type="text" name="fname" *="Enter first name" required="required" /></td>
 							</tr>
 							<tr>
 								<td>Last Name</td>
