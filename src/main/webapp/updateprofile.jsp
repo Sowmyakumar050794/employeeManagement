@@ -1,3 +1,4 @@
+<%@page import="com.teamsankya.employeemanagement.dto.EmployeeBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,9 +8,12 @@
 </head>
 <body>
 <html>
+<%
+	EmployeeBean bean = (EmployeeBean)request.getAttribute("bean");
+%>
 <body>
 <div class="border">
-	<form action="./" method="post">
+	<form action="./update" method="post">
 		<table width="800">
 			<tr>
 				<td>
@@ -18,7 +22,14 @@
 							<B>Employee Basic Info ...</B>
 						</legend>
 						<table width="500">
-							
+							<tr>
+								
+								<td>Employee Id </td>
+								<td><input type="text" name="eid" placeholder=<%= bean.getBasic().getId() %> /></td>
+								
+								
+							</tr>
+								<tr>
 								<td>First Name</td>
 								<td><input type="text" name="fname" placeholder="Enter first name" required="required" /></td>
 							</tr>
