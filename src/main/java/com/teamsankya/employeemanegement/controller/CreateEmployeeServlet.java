@@ -30,34 +30,34 @@ public class CreateEmployeeServlet extends HttpServlet {
 				.getInstence()
 				.daoGenarater();
 		
-		String id = dao.uniqueId();
+		String id = req.getParameter("eid");
 		
 		
 		EmpBasicInfo info = new EmpBasicInfo();
 		info.setFname(req.getParameter("fname"));
 		info.setLname(req.getParameter("lname"));
-		info.setId((req.getParameter(id)));
+		info.setId(id);
 
 		EmpAddrInfo addr = new EmpAddrInfo();
-		addr.setId(req.getParameter(id));
+		addr.setId(id);
 		addr.setAddr1(req.getParameter("addr1"));
 		addr.setAddr2(req.getParameter("addr2"));
 		addr.setCity(req.getParameter("city"));
 		addr.setPincode(Integer.parseInt(req.getParameter("pincode")));
 
 		EmpCompInfo comp = new EmpCompInfo();
-		comp.setId(req.getParameter(id));
+		comp.setId(id);
 		comp.setDesignation(req.getParameter("designation"));
 		comp.setDoj(java.sql.Date.valueOf(req.getParameter("date_of_join")));
 		comp.setCtc(Integer.parseInt(req.getParameter("CTC")));
 		
 		EmpLstCmpInfo last = new EmpLstCmpInfo();
-		last.setId((req.getParameter(id)));
+		last.setId(id);
 		last.setExp(req.getParameter("exp"));
 		last.setLastComp(req.getParameter("last_comp"));
 		
 		EmpPersonalInfo per = new EmpPersonalInfo();
-		per.setId((req.getParameter(id)));
+		per.setId(id);
 		per.setEmail(req.getParameter("email"));
 		per.setCellNo(Long.parseLong(req.getParameter("mob_num")));
 		per.setDob(java.sql.Date.valueOf(req.getParameter("DOB")));

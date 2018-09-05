@@ -86,11 +86,19 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 			try (Connection con = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/employee_management?user=root&password=root");
 					PreparedStatement pstmt1 = con
-							.prepareStatement("SELECT * FROM employeebasic_info ebi, employeeaddress_info eai, \r\n"
-									+ "employeepersonal_info epi, employeelastcompany_info elci,\r\n"
-									+ " employeecompany_info eci WHERE ebi.eid=eai.eid AND eai.eid=epi.eid AND epi.eid=elci.eid\r\n"
-									+ " AND elci.eid=eci.eid AND eci.eid= ?");) {
+							.prepareStatement("SELECT * FROM employeebasic_info bi, employeeaddress_info ai,\r\n" + 
+									"				employeepersonal_info pi, employeelastcompany_info lci,\r\n" + 
+									"				employeecompany_info ci WHERE bi.eid=ai.eid and ai.eid=pi.eid and pi.eid=lci.eid\r\n" + 
+									"				and lci.eid=ci.eid and (bi.eid like'%?%' or bi.fname like'%?%' or bi.lname like'%?%' \r\n" + 
+									"				or ci.designation like'%?%' or pi.email like'%?%' or pi.mob_num like'%?%');");) {
+				
+				
 				pstmt1.setString(1, id);
+				pstmt1.setString(2, id);
+				pstmt1.setString(3, id);
+				pstmt1.setString(4, id);
+				pstmt1.setString(5, id);
+				pstmt1.setString(6, id);
 				try (ResultSet rs = pstmt1.executeQuery()) {
 					if (rs.next()) {
 						System.out.println("Employee found");
@@ -251,65 +259,6 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 
 	}
 
-	@Override
-	public String getEid(String input) {
-		String eid=null;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			try (Connection con = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/employee_management?user=root&password=root")) {
-				con.setAutoCommit(false);
-				try (PreparedStatement pstmt1 = con
-						.prepareStatement("  select pi.eid from employeebasic_info bi, employeepersonal_info pi,employeecompany_info ci where \r\n" + 
-								"bi.fname=? or bi.lname=? or bi.eid=?\r\n" + 
-								" or pi.email=? or pi.mob_num=? or pi.eid=?\r\n" + 
-								"  or ci.designation=? or ci.eid=?\r\n" + 
-								" ; ");
-						/*PreparedStatement pstmt2 = con
-								.prepareStatement("select eid from employeepersonal_info where email=? or mob_num=? ");
-						PreparedStatement pstmt3 = con
-								.prepareStatement("select eid from employeecompany_info where designation=? ");*/) {
-					pstmt1.setString(1, input);
-					pstmt1.setString(2, input);
-					pstmt1.setString(3, input);
-					pstmt1.setString(4, input);
-					pstmt1.setString(5, input);
-					pstmt1.setString(6, input);
-					pstmt1.setString(7, input);
-					pstmt1.setString(8, input);
-					/*pstmt2.setString(1, input);
-					pstmt2.setString(2, input);
-					pstmt3.setString(1, input);*/
-
-					try (ResultSet rs1 = pstmt1.executeQuery();
-							/*ResultSet rs2 = pstmt2.executeQuery();
-							ResultSet rs3 = pstmt3.executeQuery()*/) {
-						if (rs1.next()) {
-							eid = rs1.getString("eid");
-							System.out.println(eid);
-							
-						} /*else if (rs2.next()) {
-							eid = rs2.getString("eid");
-							System.out.println(eid);
-							return eid;
-						} else if (rs3.next()) {
-							eid = rs3.getString("eid");
-							System.out.println(eid);
-							return eid;
-
-						}*/ else {
-							return null;
-						}
-
-					}
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} /*finally {
-
-		}*/
-		return eid;
-	}
+	
 	
 }
