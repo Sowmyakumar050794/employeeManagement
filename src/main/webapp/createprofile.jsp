@@ -18,10 +18,7 @@
 							<B>Employee Basic Info ...</B>
 						</legend>
 						<table width="500">
-							<tr>
-								<td>Employee Id</td>
-								<td><input type="text" name="eid" placeholder="Enter emp id" required="required" /></td>
-							<tr>
+							
 								<td>First Name</td>
 								<td><input type="text" name="fname" placeholder="Enter first name" required="required" /></td>
 							</tr>
