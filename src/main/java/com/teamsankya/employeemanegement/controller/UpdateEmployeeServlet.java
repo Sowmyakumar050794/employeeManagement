@@ -25,17 +25,18 @@ public class UpdateEmployeeServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String eid =req.getParameter("eid");
 		
 		logger.debug("update employee servlet");
 		logger.info("employee basic info updating");
 		EmpBasicInfo info = new EmpBasicInfo();
 		info.setFname(req.getParameter("fname"));
 		info.setLname(req.getParameter("lname"));
-		info.setId((req.getParameter("eid")));
+		
 
 		logger.info("employee address info info updating");
 		EmpAddrInfo addr = new EmpAddrInfo();
-		addr.setId(req.getParameter("eid"));
+		
 		addr.setAddr1(req.getParameter("addr1"));
 		addr.setAddr2(req.getParameter("addr2"));
 		addr.setCity(req.getParameter("city"));
@@ -43,20 +44,20 @@ public class UpdateEmployeeServlet extends HttpServlet {
 
 		logger.info("employee company info updating");
 		EmpCompInfo comp = new EmpCompInfo();
-		comp.setId(req.getParameter("eid"));
+		
 		comp.setDesignation(req.getParameter("designation"));
 		comp.setCtc(Integer.parseInt(req.getParameter("CTC")));
 		
 		logger.info("employee last company info updating");
 		EmpLstCmpInfo last = new EmpLstCmpInfo();
-		last.setId((req.getParameter("eid")));
+		
 		last.setExp(req.getParameter("exp"));
 		last.setLastComp(req.getParameter("last_comp"));
 		
 		
 		logger.info("employee personal info updating");
 		EmpPersonalInfo per = new EmpPersonalInfo();
-		per.setId((req.getParameter("eid")));
+		
 		per.setEmail(req.getParameter("email"));
 		per.setCellNo(Long.parseLong(req.getParameter("mob_num")));
 		per.setDob(java.sql.Date.valueOf(req.getParameter("DOB")));
@@ -74,8 +75,8 @@ public class UpdateEmployeeServlet extends HttpServlet {
 		EmployeeManagementDAO dao = EmployeeServiceManager
 				.getInstence()
 				.daoGenarater();
-		String id = req.getParameter("eid");
-		dao.updateData(id , bean);
+		
+		dao.updateData(eid , bean);
 		
 		logger.info("employee updating ended");
 	}

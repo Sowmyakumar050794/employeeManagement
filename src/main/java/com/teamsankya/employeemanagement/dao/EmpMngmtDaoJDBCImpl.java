@@ -214,11 +214,14 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 			}
 		}
 
+
+
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return bean;
 	}
+
 
 	@Override
 	public boolean deleteEmployee(String id) {
