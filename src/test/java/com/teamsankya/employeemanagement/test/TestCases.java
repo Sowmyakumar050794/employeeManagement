@@ -7,7 +7,7 @@ import net.sourceforge.jwebunit.WebTester;
 
 public class TestCases extends TestCase {
 	private WebTester tester = new WebTester();
-	private static final String BASE_URL = "http://localhost:8080/MyApp/";
+	private static final String BASE_URL = "http://localhost:8080/employeemanagement/";
 	int i=10;
 	@Override
 	protected void setUp() throws Exception {
@@ -15,11 +15,12 @@ public class TestCases extends TestCase {
 	}
 	@Test
 	public void testCase1() {
-		tester.beginAt("index.jsp");
+		tester.beginAt("homepage1");
+		
+		tester.clickLink("Create Profile Here");
 		tester.assertFormPresent();
-		tester.clickLink("CreateStudent");
-		tester.clickLinkWithText("CreateStudent");
-		tester.assertFormPresent();
+		
+	/*	
 		tester.setFormElement("regno", "1235");
 		tester.setFormElement("fname", "QWERTY");
 		tester.setFormElement("mname", "ASDFGG");
@@ -32,7 +33,7 @@ public class TestCases extends TestCase {
 		tester.setFormElement("guardian first name", "CFGVB");
 		tester.setFormElement("guardian middle name", "VBGGFF");
 		tester.setFormElement("guardian last name", "fdf");
-		tester.submit();
+		tester.submit();*/
 		
 	}
 
