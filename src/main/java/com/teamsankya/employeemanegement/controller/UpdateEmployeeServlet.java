@@ -77,7 +77,21 @@ public class UpdateEmployeeServlet extends HttpServlet {
 				.getInstence()
 				.daoGenarater();
 		
-		dao.updateData(eid , bean);
+		
+		EmployeeBean bean2 = dao.updateData(eid , bean);
+		if(bean2!=null)
+		{
+			req.getRequestDispatcher("updateprofileresponse.jsp")
+			.forward(req, resp);
+			
+			
+		}
+		else
+		{
+			req.getRequestDispatcher("updateerrorresponse.jsp")
+			.forward(req, resp);
+			
+		}
 		
 		logger.info("employee updating ended");
 	}

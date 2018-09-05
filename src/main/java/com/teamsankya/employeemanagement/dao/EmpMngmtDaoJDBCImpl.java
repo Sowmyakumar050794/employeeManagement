@@ -216,7 +216,14 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 				System.out.println(c5);
 
 				con.commit();
-
+				int fin = c1+c2+c3+c4+c5;
+				if(fin!=5)
+				{
+					return null;
+				}
+				else {
+					return bean;
+				}
 			}
 		}
 		}

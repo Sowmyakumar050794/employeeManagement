@@ -27,7 +27,7 @@
 								<td>Employee Id </td>
 								
 					
-									<td> <input type="hidden" id="eid" name="eid"   value="<%= bean.getBasic().getId() %>"></td>
+									<td> <input type="text"  name="eid"   value="<%= bean.getBasic().getId() %>" hidden></td>
 								
 								
 							</tr> 
