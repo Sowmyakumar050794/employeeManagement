@@ -103,9 +103,11 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 				try (ResultSet rs = pstmt1.executeQuery()) {
 					if (rs.next()) {
 						System.out.println("Employee found");
-						info.setFname(rs.getString("fname"));
+						//info.setFname(rs.getString("fname"));
 						info.setId(id);
-						info.setLname(rs.getString("fname"));
+						info.setId(rs.getString("eid"));
+						info.setFname(rs.getString("fname"));
+						info.setLname(rs.getString("lname"));
 
 						addr.setId(id);
 						addr.setAddr1(rs.getString("addr1"));
