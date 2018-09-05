@@ -22,13 +22,15 @@
 							<B>Employee Basic Info ...</B>
 						</legend>
 						<table width="500">
-							<tr>
+						 	<tr>
 								
 								<td>Employee Id </td>
-								<td>< <%= bean.getBasic().getId() %> /></td>
+								
+					
+									<td> <input type="hidden" id="eid" name="eid"   value="<%= bean.getBasic().getId() %>"></td>
 								
 								
-							</tr>
+							</tr> 
 								<tr>
 								<td>First Name</td>
 								<td><input type="text" name="fname" *="Enter first name" required="required" /></td>
