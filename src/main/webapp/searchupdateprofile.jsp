@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="./update" method="get">
+<form action="./updatesearch" method="get">
 		<fieldset title="Search">
 			<legend><B> Enter Employee ID to Update </B></legend>
 			<BR/>

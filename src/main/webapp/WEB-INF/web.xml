@@ -52,6 +52,16 @@
     <url-pattern>/update</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>updatesearch</servlet-name>
+    <servlet-class>com.teamsankya.employeemanegement.controller.UpdateSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updatesearch</servlet-name>
+    <url-pattern>/updatesearch</url-pattern>
+  </servlet-mapping>
+  
+  
    
   
   
