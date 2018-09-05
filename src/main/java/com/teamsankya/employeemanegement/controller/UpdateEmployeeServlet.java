@@ -25,7 +25,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String eid =req.getQueryString();
+		String eid =req.getParameter("eid");
 		System.out.println(eid);
 		
 		logger.debug("update employee servlet");
@@ -33,7 +33,8 @@ public class UpdateEmployeeServlet extends HttpServlet {
 		EmpBasicInfo info = new EmpBasicInfo();
 		info.setFname(req.getParameter("fname"));
 		info.setLname(req.getParameter("lname"));
-		
+		System.out.println(req.getParameter("fanme"));
+		System.out.println(req.getParameter("lanme"));
 
 		logger.info("employee address info info updating");
 		EmpAddrInfo addr = new EmpAddrInfo();
