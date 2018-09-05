@@ -16,7 +16,9 @@ public class GetEmpServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
+		String name = req.getParameter("keyword");
+
 		EmployeeManagementDAO dao = EmployeeServiceManager
 				.getInstence()
 				.daoGenarater();
@@ -25,7 +27,7 @@ public class GetEmpServlet extends HttpServlet {
 		*/
 		
 		
-		EmployeeBean bean = dao.getEmployee(req.getParameter("search"));
+		EmployeeBean bean = dao.getEmployee(name);
 		System.out.println(bean);
 		req.getRequestDispatcher("searchEmployeeResponse.jsp")
 		.forward(req, resp);
