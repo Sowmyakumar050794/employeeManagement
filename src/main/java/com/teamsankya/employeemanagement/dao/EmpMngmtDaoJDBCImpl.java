@@ -127,14 +127,14 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 						return null;
 					}
 				}
-
+			}
+			
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		return null;
 
-		} finally {
-			return null;
-		}
+		
 
 	}
 
