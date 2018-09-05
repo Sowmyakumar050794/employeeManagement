@@ -19,7 +19,7 @@ import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
 
 public class UpdateEmployeeServlet extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		EmpBasicInfo info = new EmpBasicInfo();
 		info.setFname(req.getParameter("fname"));

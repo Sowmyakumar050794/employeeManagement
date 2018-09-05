@@ -9,8 +9,6 @@ public interface EmployeeManagementDAO {
 	public EmployeeBean getEmployee(String id);
 	public EmployeeBean updateData(String id, EmployeeBean bean);
 	public boolean deleteEmployee(String id);
-
-	
 	
 	public default   String idGenerator()
 	{ 
