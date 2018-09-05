@@ -36,8 +36,8 @@
 									<td><input type="text" name="lname"
 										placeholder="<%=bean.getBasic().getLname() %>" required="required" /></td>
 								</tr>
-								
 							</table>
+							
 						</fieldset>
 					</td>
 				</tr>
