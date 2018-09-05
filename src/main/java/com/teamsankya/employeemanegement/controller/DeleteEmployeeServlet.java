@@ -21,7 +21,7 @@ public class DeleteEmployeeServlet extends HttpServlet {
 				.getInstence()
 				.daoGenarater();
 		dao.deleteEmployee(String);
-		req.getRequestDispatcher("eleteEmployeeResponse.jsp")
+		req.getRequestDispatcher("deleteEmployeeResponse.jsp")
 		.forward(req, resp);
 
 		
