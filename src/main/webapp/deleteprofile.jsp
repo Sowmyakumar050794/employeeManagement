@@ -15,11 +15,11 @@
 		<form action="./delete" method="post">
 			<table height="60%">
 				<tr>
-					<td>Emp_Id</td>
+					<td>EmployeeId</td>
 					<td><input type="text" name="eid" placeholder="Insert  Emp Id" /></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Submit" /></td>
+					<td><input type="submit" value="Delete" /></td>
 					<td><input type="reset" value="Reset" /></td>
 				</tr>
 			</table>

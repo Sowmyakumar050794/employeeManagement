@@ -32,6 +32,7 @@ public class GetEmpServlet extends HttpServlet {
 
 		logger.fatal(name);
 		EmployeeBean bean = dao.getEmployee(name);
+		req.setAttribute("bean", bean);
 		System.out.println(bean);
 		req.getRequestDispatcher("searchEmployeeResponse.jsp")
 		.forward(req, resp);

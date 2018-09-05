@@ -22,6 +22,7 @@ import com.teamsankya.employeemanagement.dto.EmpLstCmpInfo;
 import com.teamsankya.employeemanagement.dto.EmpPersonalInfo;
 import com.teamsankya.employeemanagement.dto.EmployeeBean;
 import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
+import com.teamsankya.employeemanagement.util.IdGenerator;
 
 
 public class CreateEmployeeServlet extends HttpServlet {
@@ -39,7 +40,8 @@ public class CreateEmployeeServlet extends HttpServlet {
 				.getInstence()
 				.daoGenarater();
 		
-		String id = req.getParameter("eid");
+		
+		String id =IdGenerator.uniqueId();
 		
 		
 		EmpBasicInfo info = new EmpBasicInfo();
@@ -88,7 +90,8 @@ public class CreateEmployeeServlet extends HttpServlet {
 		bean.setPersonal(per);
 		
 		
-		dao.createEmployee(bean);
+		boolean result =dao.createEmployee(bean);
+		System.out.println(result);
 		req.getRequestDispatcher("CreateEmployeeResponse.jsp")
 		.forward(req, resp);
 		
