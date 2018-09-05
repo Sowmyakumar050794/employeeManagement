@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.teamsankya.employeemanagement.dao.EmployeeManagementDAO;
 import com.teamsankya.employeemanagement.dto.EmpAddrInfo;
 import com.teamsankya.employeemanagement.dto.EmpBasicInfo;
@@ -18,15 +20,21 @@ import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
 
 
 public class UpdateEmployeeServlet extends HttpServlet {
+	
+	final static Logger logger = Logger.getLogger(UpdateEmployeeServlet.class);
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String eid =req.getParameter("eid");
 		
+		logger.debug("update employee servlet");
+		logger.info("employee basic info updating");
 		EmpBasicInfo info = new EmpBasicInfo();
 		info.setFname(req.getParameter("fname"));
 		info.setLname(req.getParameter("lname"));
 		
 
+		logger.info("employee address info info updating");
 		EmpAddrInfo addr = new EmpAddrInfo();
 		
 		addr.setAddr1(req.getParameter("addr1"));
@@ -34,16 +42,20 @@ public class UpdateEmployeeServlet extends HttpServlet {
 		addr.setCity(req.getParameter("city"));
 		addr.setPincode(Integer.parseInt(req.getParameter("pincode")));
 
+		logger.info("employee company info updating");
 		EmpCompInfo comp = new EmpCompInfo();
 		
 		comp.setDesignation(req.getParameter("designation"));
 		comp.setCtc(Integer.parseInt(req.getParameter("CTC")));
 		
+		logger.info("employee last company info updating");
 		EmpLstCmpInfo last = new EmpLstCmpInfo();
 		
 		last.setExp(req.getParameter("exp"));
 		last.setLastComp(req.getParameter("last_comp"));
 		
+		
+		logger.info("employee personal info updating");
 		EmpPersonalInfo per = new EmpPersonalInfo();
 		
 		per.setEmail(req.getParameter("email"));
@@ -63,10 +75,10 @@ public class UpdateEmployeeServlet extends HttpServlet {
 		EmployeeManagementDAO dao = EmployeeServiceManager
 				.getInstence()
 				.daoGenarater();
-		String id = req.getParameter("eid");
-		dao.updateData(id , bean);
 		
+		dao.updateData(eid , bean);
 		
+		logger.info("employee updating ended");
 	}
 
 }

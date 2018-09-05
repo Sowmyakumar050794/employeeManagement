@@ -1,7 +1,10 @@
 package com.teamsankya.employeemanagement.dto;
 
+import org.apache.log4j.Logger;
+
 public class EmployeeBean {
 	
+	final static Logger logger = Logger.getLogger(EmployeeBean.class);
 	
 private EmpAddrInfo addr = new EmpAddrInfo();
 private EmpBasicInfo basic = new EmpBasicInfo();
@@ -13,6 +16,9 @@ private EmpPersonalInfo personal = new EmpPersonalInfo();
 
 
 public EmpAddrInfo getAddr() {
+
+	logger.info("generating getters and setters method for employee bean info table");
+	
 	return addr;
 }
 public void setAddr(EmpAddrInfo addr) {

@@ -1,6 +1,11 @@
 package com.teamsankya.employeemanagement.dto;
 
+import org.apache.log4j.Logger;
+
 public class EmpBasicInfo {
+	
+	final static Logger logger = Logger.getLogger(EmpBasicInfo.class);
+	
 	private String id ;
 	private String fname ;
 	private String lname ;
@@ -8,6 +13,7 @@ public class EmpBasicInfo {
 	
 	
 	public String getId() {
+		logger.info("generating getters and setters method for employee basic info table");
 		return id;
 	}
 	public void setId(String id) {

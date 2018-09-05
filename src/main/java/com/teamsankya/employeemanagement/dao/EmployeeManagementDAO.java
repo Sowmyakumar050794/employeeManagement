@@ -9,16 +9,13 @@ public interface EmployeeManagementDAO {
 	public EmployeeBean getEmployee(String id);
 	public EmployeeBean updateData(String id, EmployeeBean bean);
 	public boolean deleteEmployee(String id);
+
+	
 	
 	public default   String idGenerator()
-	{
+	{ 
 		
-		
-		
-		
-		
-		return null; 
-		/*char[] idChar = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o'
+		char[] idChar = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o'
 				,'p','q','r','s','t','u','v','w','x','y','z'
 				,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V'
 				,'V','W','X','Y','Z','1','2','3','4','5','6','7','8','9','0'};
@@ -28,11 +25,7 @@ public interface EmployeeManagementDAO {
 			int index = random.nextInt(idChar.length);
 			id=id+idChar[index];
 		}
-		return id;*/
-		
-		
-		
-		
+		return id;
 	}
 	
 	public default String uniqueId() {
