@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Random;
+
+import org.apache.log4j.Logger;
 
 import com.teamsankya.employeemanagement.dto.EmpAddrInfo;
 import com.teamsankya.employeemanagement.dto.EmpBasicInfo;
@@ -11,11 +14,17 @@ import com.teamsankya.employeemanagement.dto.EmpCompInfo;
 import com.teamsankya.employeemanagement.dto.EmpLstCmpInfo;
 import com.teamsankya.employeemanagement.dto.EmpPersonalInfo;
 import com.teamsankya.employeemanagement.dto.EmployeeBean;
+import com.teamsankya.employeemanegement.controller.CreateEmployeeServlet;
 
 public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
+	
+	final static Logger logger = Logger.getLogger(EmpMngmtDaoJDBCImpl.class);
 
 	@Override
 	public boolean createEmployee(EmployeeBean bean) {
+		
+		logger.info("implementing creating employee method");
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			try (Connection con = DriverManager
@@ -71,6 +80,8 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 
 	@Override
 	public EmployeeBean getEmployee(String id) {
+		
+		logger.info("implementing retreive employee method");
 
 		EmpBasicInfo info = new EmpBasicInfo();
 		EmpAddrInfo addr = new EmpAddrInfo();
@@ -84,11 +95,18 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 			try (Connection con = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/employee_management?user=root&password=root");
 					PreparedStatement pstmt1 = con
-							.prepareStatement("SELECT * FROM employeebasic_info ebi, employeeaddress_info eai, \r\n"
-									+ "employeepersonal_info epi, employeelastcompany_info elci,\r\n"
-									+ " employeecompany_info eci WHERE ebi.eid=eai.eid AND eai.eid=epi.eid AND epi.eid=elci.eid\r\n"
-									+ " AND elci.eid=eci.eid AND eci.eid= ?");) {
+							.prepareStatement("SELECT * FROM employeebasic_info bi, employeeaddress_info ai,\r\n"
+									+ "				employeepersonal_info pi, employeelastcompany_info lci,\r\n"
+									+ "				employeecompany_info ci WHERE bi.eid=ai.eid and ai.eid=pi.eid and pi.eid=lci.eid\r\n"
+									+ "				and lci.eid=ci.eid and (bi.eid like'%?%' or bi.fname like'%?%' or bi.lname like'%?%' \r\n"
+									+ "				or ci.designation like'%?%' or pi.email like'%?%' or pi.mob_num like'%?%');");) {
+
 				pstmt1.setString(1, id);
+				pstmt1.setString(2, id);
+				pstmt1.setString(3, id);
+				pstmt1.setString(4, id);
+				pstmt1.setString(5, id);
+				pstmt1.setString(6, id);
 				try (ResultSet rs = pstmt1.executeQuery()) {
 					if (rs.next()) {
 						System.out.println("Employee found");
@@ -126,87 +144,87 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 					} else {
 						return null;
 					}
+
 				}
 			}
-			
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
-
-		
-
 	}
 
 	@Override
-		public EmployeeBean updateData(String id, EmployeeBean bean) {
-			
-			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				try (Connection con = DriverManager
-						.getConnection("jdbc:mysql://localhost:3306/employee_management?user=root&password=root");
-						PreparedStatement pstmt1 = con.prepareStatement("UPDATE employeebasic_info SET FNAME=?,LNAME=? WHERE EID=?");
-						PreparedStatement pstmt2 = con.prepareStatement("UPDATE employeeaddress_info SET ADDR1=?,ADDR2=?,CITY=?,PINCODE=? WHERE EID=?");
-						PreparedStatement pstmt3 = con.prepareStatement("UPDATE employeepersonal_info SET EMAIL=?,MOB_NUM=?,DOB=? WHERE EID=?");
-						PreparedStatement pstmt4 = con.prepareStatement("UPDATE employeelastcompany_info SET EXP=?,LAST_COMP=? WHERE EID=?");
-						PreparedStatement pstmt5 = con.prepareStatement("UPDATE employeecompany_info SET DESIGNATION=?,DATE_OF_JOIN=?,CTC=? WHERE EID=?");) 
-				{
+	public EmployeeBean updateData(String id, EmployeeBean bean) {
 
-					pstmt1.setString(1, bean.getBasic().getId());
-					pstmt1.setString(2, bean.getBasic().getFname());
-					pstmt1.setString(3, bean.getBasic().getLname());
-
-					pstmt2.setString(1, bean.getAddr().getId());
-					pstmt2.setString(2, bean.getAddr().getAddr1());
-					pstmt2.setString(3, bean.getAddr().getAddr2());
-					pstmt2.setString(4, bean.getAddr().getCity());
-					pstmt2.setInt(5, bean.getAddr().getPincode());
-
-					pstmt3.setString(1, bean.getPersonal().getId());
-					pstmt3.setString(2, bean.getPersonal().getEmail());
-					pstmt3.setLong(3, bean.getPersonal().getCellNo());
-					pstmt3.setDate(4, bean.getPersonal().getDob());
-
-					pstmt4.setString(1, bean.getLstcmp().getId());
-					pstmt4.setString(2, bean.getLstcmp().getExp());
-					pstmt4.setString(3, bean.getLstcmp().getLastComp());
-
-
-					pstmt5.setString(1, bean.getComp().getId());
-					pstmt5.setString(2, bean.getComp().getDesignation());
-					pstmt5.setDate(3, bean.getComp().getDoj());
-					pstmt5.setLong(4, bean.getComp().getCtc());
-
-					int c1 = pstmt1.executeUpdate();
-					System.out.println(c1);
-					int c2 = pstmt2.executeUpdate();
-					System.out.println(c2);
-					int c3 = pstmt3.executeUpdate();
-					System.out.println(c3);
-					int c4 = pstmt4.executeUpdate();
-					System.out.println(c4);
-					int c5 = pstmt5.executeUpdate();
-					System.out.println(c5);
-					
-					con.commit();
-
-				}
-			}
-	
-				catch(Exception e)
-				{
-					e.printStackTrace();
-				}
-			return bean;
-			}
-
-					
-
-			
+		logger.info("implementing updating employee method");
 		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			try (Connection con = DriverManager
+					.getConnection("jdbc:mysql://localhost:3306/employee_management?user=root&password=root");
+					PreparedStatement pstmt1 = con
+							.prepareStatement("UPDATE employeebasic_info SET FNAME=?,LNAME=? WHERE EID=?");
+					PreparedStatement pstmt2 = con.prepareStatement(
+							"UPDATE employeeaddress_info SET ADDR1=?,ADDR2=?,CITY=?,PINCODE=? WHERE EID=?");
+					PreparedStatement pstmt3 = con
+							.prepareStatement("UPDATE employeepersonal_info SET EMAIL=?,MOB_NUM=?,DOB=? WHERE EID=?");
+					PreparedStatement pstmt4 = con
+							.prepareStatement("UPDATE employeelastcompany_info SET EXP=?,LAST_COMP=? WHERE EID=?");
+					PreparedStatement pstmt5 = con.prepareStatement(
+							"UPDATE employeecompany_info SET DESIGNATION=?,DATE_OF_JOIN=?,CTC=? WHERE EID=?");) {
+
+				pstmt1.setString(1, bean.getBasic().getId());
+				pstmt1.setString(2, bean.getBasic().getFname());
+				pstmt1.setString(3, bean.getBasic().getLname());
+
+				pstmt2.setString(1, bean.getAddr().getId());
+				pstmt2.setString(2, bean.getAddr().getAddr1());
+				pstmt2.setString(3, bean.getAddr().getAddr2());
+				pstmt2.setString(4, bean.getAddr().getCity());
+				pstmt2.setInt(5, bean.getAddr().getPincode());
+
+				pstmt3.setString(1, bean.getPersonal().getId());
+				pstmt3.setString(2, bean.getPersonal().getEmail());
+				pstmt3.setLong(3, bean.getPersonal().getCellNo());
+				pstmt3.setDate(4, bean.getPersonal().getDob());
+
+				pstmt4.setString(1, bean.getLstcmp().getId());
+				pstmt4.setString(2, bean.getLstcmp().getExp());
+				pstmt4.setString(3, bean.getLstcmp().getLastComp());
+
+				pstmt5.setString(1, bean.getComp().getId());
+				pstmt5.setString(2, bean.getComp().getDesignation());
+				pstmt5.setDate(3, bean.getComp().getDoj());
+				pstmt5.setLong(4, bean.getComp().getCtc());
+
+				int c1 = pstmt1.executeUpdate();
+				System.out.println(c1);
+				int c2 = pstmt2.executeUpdate();
+				System.out.println(c2);
+				int c3 = pstmt3.executeUpdate();
+				System.out.println(c3);
+				int c4 = pstmt4.executeUpdate();
+				System.out.println(c4);
+				int c5 = pstmt5.executeUpdate();
+				System.out.println(c5);
+
+				con.commit();
+
+			}
+		}
+
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bean;
+	}
 
 	@Override
 	public boolean deleteEmployee(String id) {
+		
+		logger.info("implementing delete employee method");
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			try (Connection con = DriverManager
@@ -247,68 +265,9 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 			e.printStackTrace();
 		}
 		return false;
+		
+		
 
 	}
 
-	@Override
-	public String getEid(String input) {
-		String eid=null;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			try (Connection con = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/employee_management?user=root&password=root")) {
-				con.setAutoCommit(false);
-				try (PreparedStatement pstmt1 = con
-						.prepareStatement("  select pi.eid from employeebasic_info bi, employeepersonal_info pi,employeecompany_info ci where \r\n" + 
-								"bi.fname=? or bi.lname=? or bi.eid=?\r\n" + 
-								" or pi.email=? or pi.mob_num=? or pi.eid=?\r\n" + 
-								"  or ci.designation=? or ci.eid=?\r\n" + 
-								" ; ");
-						/*PreparedStatement pstmt2 = con
-								.prepareStatement("select eid from employeepersonal_info where email=? or mob_num=? ");
-						PreparedStatement pstmt3 = con
-								.prepareStatement("select eid from employeecompany_info where designation=? ");*/) {
-					pstmt1.setString(1, input);
-					pstmt1.setString(2, input);
-					pstmt1.setString(3, input);
-					pstmt1.setString(4, input);
-					pstmt1.setString(5, input);
-					pstmt1.setString(6, input);
-					pstmt1.setString(7, input);
-					pstmt1.setString(8, input);
-					/*pstmt2.setString(1, input);
-					pstmt2.setString(2, input);
-					pstmt3.setString(1, input);*/
-
-					try (ResultSet rs1 = pstmt1.executeQuery();
-							/*ResultSet rs2 = pstmt2.executeQuery();
-							ResultSet rs3 = pstmt3.executeQuery()*/) {
-						if (rs1.next()) {
-							eid = rs1.getString("eid");
-							System.out.println(eid);
-							
-						} /*else if (rs2.next()) {
-							eid = rs2.getString("eid");
-							System.out.println(eid);
-							return eid;
-						} else if (rs3.next()) {
-							eid = rs3.getString("eid");
-							System.out.println(eid);
-							return eid;
-
-						}*/ else {
-							return null;
-						}
-
-					}
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} /*finally {
-
-		}*/
-		return eid;
-	}
-	
 }

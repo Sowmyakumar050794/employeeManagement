@@ -21,7 +21,7 @@ import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
 
 public class UpdateEmployeeServlet extends HttpServlet {
 	
-	final static Logger logger = Logger.getLogger(CreateEmployeeServlet.class);
+	final static Logger logger = Logger.getLogger(UpdateEmployeeServlet.class);
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

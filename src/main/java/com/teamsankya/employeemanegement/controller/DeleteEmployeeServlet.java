@@ -15,7 +15,7 @@ import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
 
 public class DeleteEmployeeServlet extends HttpServlet {
 	
-	final static Logger logger = Logger.getLogger(CreateEmployeeServlet.class);
+	final static Logger logger = Logger.getLogger(DeleteEmployeeServlet.class);
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

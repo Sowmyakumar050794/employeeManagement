@@ -15,21 +15,23 @@ import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
 
 public class GetEmpServlet extends HttpServlet {
 
-	final static Logger logger = Logger.getLogger(CreateEmployeeServlet.class);
+	final static Logger logger = Logger.getLogger(GetEmpServlet.class);
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		logger.info(req);
-		String name = req.getParameter("name");
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String name = req.getParameter("keyword");
+
+
 		EmployeeManagementDAO dao = EmployeeServiceManager
 				.getInstence()
 				.daoGenarater();
 		/*String eid = dao.getEid(name);
 		EmployeeBean bean = dao.getEmployee(eid);
 		*/
+
 		logger.fatal(name);
-		EmployeeBean bean = dao.getEmployee(dao.getEid(name));
+		EmployeeBean bean = dao.getEmployee(name);
 		System.out.println(bean);
 		req.getRequestDispatcher("searchEmployeeResponse.jsp")
 		.forward(req, resp);

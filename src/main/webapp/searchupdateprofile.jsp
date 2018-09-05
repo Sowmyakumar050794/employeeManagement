@@ -7,29 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="./get" method="get">
+<form action="./" method="post">
 		<fieldset title="Search">
-			<legend><B>Search By Employee Info</B></legend>
+			<legend><B> Enter Employee ID to Update </B></legend>
 			<BR/>
 			<table height="60%">
 			<tr>
-				<td>Search Employee  </td>
-				<td><input type="text" name="keyword" placeholder="search here"/></td>
+			<td>Employee Id  </td>
+				<td><input type="text" name="eid" placeholder="Insert  Emp Id"/></td>
 			</tr>
-			
-				<!-- <td><B>NOTE:</B>  </td>
-				<td><B><U><I><font color="red"> Search Employee Details any one field </font></B></U></I></td> -->
-			</tr>
-			<tr></tr><tr></tr><tr></tr>
 			<tr>
-				<td><input type="submit" value="Search "/></td>
+				<td><input type="submit" value="Submit"/></td>
 				<td><input type="reset" value="Reset"/></td>
 			</tr>
-		</table>
-			
-		
-		</fieldset>
-	</form>
 
 </body>
 </html>

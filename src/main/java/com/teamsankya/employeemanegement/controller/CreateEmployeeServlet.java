@@ -35,14 +35,23 @@ public class CreateEmployeeServlet extends HttpServlet {
 		logger.info("program started");
 		logger.info(resp);
 		logger.info("created first object info object");
+		EmployeeManagementDAO dao = EmployeeServiceManager
+				.getInstence()
+				.daoGenarater();
+		
+		String id = req.getParameter("eid");
+		
+		
 		EmpBasicInfo info = new EmpBasicInfo();
 		info.setFname(req.getParameter("fname"));
 		info.setLname(req.getParameter("lname"));
 		info.setId((req.getParameter("eid")));
 
 		logger.info("created employee address info object");
+		info.setId(id);
+
 		EmpAddrInfo addr = new EmpAddrInfo();
-		addr.setId(req.getParameter("eid"));
+		addr.setId(id);
 		addr.setAddr1(req.getParameter("addr1"));
 		addr.setAddr2(req.getParameter("addr2"));
 		addr.setCity(req.getParameter("city"));
@@ -50,20 +59,20 @@ public class CreateEmployeeServlet extends HttpServlet {
 
 		logger.info("setting and getting values");
 		EmpCompInfo comp = new EmpCompInfo();
-		comp.setId(req.getParameter("eid"));
+		comp.setId(id);
 		comp.setDesignation(req.getParameter("designation"));
 		comp.setDoj(java.sql.Date.valueOf(req.getParameter("date_of_join")));
 		comp.setCtc(Integer.parseInt(req.getParameter("CTC")));
 		
 		logger.info("created employee company info");
 		EmpLstCmpInfo last = new EmpLstCmpInfo();
-		last.setId((req.getParameter("eid")));
+		last.setId(id);
 		last.setExp(req.getParameter("exp"));
 		last.setLastComp(req.getParameter("last_comp"));
 		
 		logger.info("created employee personal details");
 		EmpPersonalInfo per = new EmpPersonalInfo();
-		per.setId((req.getParameter("eid")));
+		per.setId(id);
 		per.setEmail(req.getParameter("email"));
 		per.setCellNo(Long.parseLong(req.getParameter("mob_num")));
 		per.setDob(java.sql.Date.valueOf(req.getParameter("DOB")));
@@ -78,9 +87,7 @@ public class CreateEmployeeServlet extends HttpServlet {
 		bean.setLstcmp(last);
 		bean.setPersonal(per);
 		
-		EmployeeManagementDAO dao = EmployeeServiceManager
-				.getInstence()
-				.daoGenarater();
+		
 		dao.createEmployee(bean);
 		req.getRequestDispatcher("CreateEmployeeResponse.jsp")
 		.forward(req, resp);

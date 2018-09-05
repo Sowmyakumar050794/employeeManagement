@@ -2,7 +2,12 @@ package com.teamsankya.employeemanagement.dto;
 
 import java.sql.Date;
 
+import org.apache.log4j.Logger;
+
 public class EmpPersonalInfo {
+	
+	final static Logger logger = Logger.getLogger(EmpPersonalInfo.class);
+	
 	private String id ;
 	private String email ;
 	private long cellNo ;
@@ -10,6 +15,7 @@ public class EmpPersonalInfo {
 	
 	
 	public String getId() {
+		logger.info("generating getters and setters method for employee personal info table");
 		return id;
 	}
 	public void setId(String id) {
