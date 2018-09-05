@@ -2,13 +2,19 @@ package com.teamsankya.employeemanagement.dto;
 
 import java.sql.Date;
 
+import org.apache.log4j.Logger;
+
 public class EmpCompInfo {
 
+	final static Logger logger = Logger.getLogger(EmpCompInfo.class);
 	
 	private String id ;
 	private String designation ;
 	private Date doj;
 	public Date getDoj() {
+		
+		logger.info("generating getters and setters method for employee company info table");
+		
 		return doj;
 	}
 	public void setDoj(Date doj) {

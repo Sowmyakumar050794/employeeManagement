@@ -9,9 +9,12 @@ public interface EmployeeManagementDAO {
 	public EmployeeBean getEmployee(String id);
 	public EmployeeBean updateData(String id, EmployeeBean bean);
 	public boolean deleteEmployee(String id);
+
+	
 	
 	public default   String idGenerator()
 	{ 
+		
 		char[] idChar = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o'
 				,'p','q','r','s','t','u','v','w','x','y','z'
 				,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V'
