@@ -86,19 +86,19 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 			try (Connection con = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/employee_management?user=root&password=root");
 					PreparedStatement pstmt1 = con
-							.prepareStatement("SELECT * FROM employeebasic_info bi, employeeaddress_info ai,\r\n" + 
-									"				employeepersonal_info pi, employeelastcompany_info lci,\r\n" + 
-									"				employeecompany_info ci WHERE bi.eid=ai.eid and ai.eid=pi.eid and pi.eid=lci.eid\r\n" + 
-									"				and lci.eid=ci.eid and (bi.eid like'%?%' or bi.fname like'%?%' or bi.lname like'%?%' \r\n" + 
-									"				or ci.designation like'%?%' or pi.email like'%?%' or pi.mob_num like'%?%');");) {
+							.prepareStatement("SELECT * FROM employeebasic_info bi, employeeaddress_info ai," + 
+									" employeepersonal_info pi, employeelastcompany_info lci," + 
+									" employeecompany_info ci WHERE bi.eid=ai.eid and ai.eid=pi.eid and pi.eid=lci.eid" + 
+									" and lci.eid=ci.eid and (bi.eid like ? or bi.fname like ? or bi.lname like ?" + 
+									"or ci.designation like ? or pi.email like ? or pi.mob_num like ?);");) {
 				
 				
-				pstmt1.setString(1, id);
-				pstmt1.setString(2, id);
-				pstmt1.setString(3, id);
-				pstmt1.setString(4, id);
-				pstmt1.setString(5, id);
-				pstmt1.setString(6, id);
+				pstmt1.setString(1,"%"+ id+"%");
+				pstmt1.setString(2, "%"+id+"%");
+				pstmt1.setString(3, "%"+id+"%");
+				pstmt1.setString(4, "%"+id+"%");
+				pstmt1.setString(5, "%"+id+"%");
+				pstmt1.setString(6, "%"+id+"%");
 				try (ResultSet rs = pstmt1.executeQuery()) {
 					if (rs.next()) {
 						System.out.println("Employee found");

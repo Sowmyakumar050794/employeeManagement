@@ -13,7 +13,7 @@
 <body>
 <%if(bean!=null) {%>
 	<table>
-		<tr>
+	 <tr bgcolor=\"green\">>
 			<td>Eid</td>
 			<td>Fname</td>
 			<td>Lname</td>
