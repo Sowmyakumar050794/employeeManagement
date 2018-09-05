@@ -25,7 +25,7 @@
 							<tr>
 								
 								<td>Employee Id </td>
-								<td><input type="text" name="eid" placeholder=<%= bean.getBasic().getId() %> /></td>
+								<td><%= bean.getBasic().getId() %></td>
 								
 								
 							</tr>
