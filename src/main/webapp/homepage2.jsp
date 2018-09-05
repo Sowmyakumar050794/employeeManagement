@@ -25,8 +25,8 @@
 		<div class="header" align="left" id="top">
 		     <ul class="topnav"  style="list-style: none">
 				
-				<li><a href="./searchprofile.jsp" class="a" id="font" position="center">Seach Profile</a></li>
-				<li><a href="./updateprofile.jsp" class="a" id="font" position="center">Update Profile</a></li>
+				<li><a href="./searchprofile.jsp" class="a" id="font" position="center">Search Profile</a></li>
+				<li><a href="./searchupdateprofile.jsp" class="a" id="font" position="center">Update Profile</a></li>
 				<li><a href="./deleteprofile.jsp" class="a" id="font" position="center">Delete Profile</a></li>
 			</ul> 
 	</div>
