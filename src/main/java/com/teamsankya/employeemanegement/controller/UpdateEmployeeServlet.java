@@ -20,31 +20,32 @@ import com.teamsankya.employeemanagement.util.EmployeeServiceManager;
 public class UpdateEmployeeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String eid =req.getParameter("eid");
 		
 		EmpBasicInfo info = new EmpBasicInfo();
 		info.setFname(req.getParameter("fname"));
 		info.setLname(req.getParameter("lname"));
-		info.setId((req.getParameter("eid")));
+		
 
 		EmpAddrInfo addr = new EmpAddrInfo();
-		addr.setId(req.getParameter("eid"));
+		
 		addr.setAddr1(req.getParameter("addr1"));
 		addr.setAddr2(req.getParameter("addr2"));
 		addr.setCity(req.getParameter("city"));
 		addr.setPincode(Integer.parseInt(req.getParameter("pincode")));
 
 		EmpCompInfo comp = new EmpCompInfo();
-		comp.setId(req.getParameter("eid"));
+		
 		comp.setDesignation(req.getParameter("designation"));
 		comp.setCtc(Integer.parseInt(req.getParameter("CTC")));
 		
 		EmpLstCmpInfo last = new EmpLstCmpInfo();
-		last.setId((req.getParameter("eid")));
+		
 		last.setExp(req.getParameter("exp"));
 		last.setLastComp(req.getParameter("last_comp"));
 		
 		EmpPersonalInfo per = new EmpPersonalInfo();
-		per.setId((req.getParameter("eid")));
+		
 		per.setEmail(req.getParameter("email"));
 		per.setCellNo(Long.parseLong(req.getParameter("mob_num")));
 		per.setDob(java.sql.Date.valueOf(req.getParameter("DOB")));
