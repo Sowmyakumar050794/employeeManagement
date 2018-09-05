@@ -62,6 +62,7 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 				boolean p4 = pstmt4.execute();
 				boolean p5 = pstmt5.execute();
 				System.out.println(p1 + " " + p2 + " " + p3 + " " + p4 + " " + p5);
+				return true;
 
 			}
 		} catch (Exception e) {
