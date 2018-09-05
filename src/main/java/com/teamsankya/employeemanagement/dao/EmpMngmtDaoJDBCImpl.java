@@ -161,30 +161,34 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 						PreparedStatement pstmt5 = con.prepareStatement("UPDATE employeecompany_info SET DESIGNATION=?,DATE_OF_JOIN=?,CTC=? WHERE EID=?");) 
 				{
 
-					pstmt1.setString(1, bean.getBasic().getId());
+					pstmt1.setString(3, bean.getBasic().getId());
 					pstmt1.setString(2, bean.getBasic().getFname());
-					pstmt1.setString(3, bean.getBasic().getLname());
+					pstmt1.setString(1, bean.getBasic().getLname());
 
-					pstmt2.setString(1, bean.getAddr().getId());
-					pstmt2.setString(2, bean.getAddr().getAddr1());
-					pstmt2.setString(3, bean.getAddr().getAddr2());
-					pstmt2.setString(4, bean.getAddr().getCity());
-					pstmt2.setInt(5, bean.getAddr().getPincode());
+					
+					pstmt2.setString(1, bean.getAddr().getAddr1());
+					pstmt2.setString(2, bean.getAddr().getAddr2());
+					pstmt2.setString(3, bean.getAddr().getCity());
+					pstmt2.setInt(4, bean.getAddr().getPincode());
+					pstmt2.setString(5, bean.getAddr().getId());
 
-					pstmt3.setString(1, bean.getPersonal().getId());
-					pstmt3.setString(2, bean.getPersonal().getEmail());
-					pstmt3.setLong(3, bean.getPersonal().getCellNo());
-					pstmt3.setDate(4, bean.getPersonal().getDob());
+					
+					pstmt3.setString(1, bean.getPersonal().getEmail());
+					pstmt3.setLong(2, bean.getPersonal().getCellNo());
+					pstmt3.setDate(3, bean.getPersonal().getDob());
+					pstmt3.setString(4, bean.getPersonal().getId());
 
-					pstmt4.setString(1, bean.getLstcmp().getId());
-					pstmt4.setString(2, bean.getLstcmp().getExp());
-					pstmt4.setString(3, bean.getLstcmp().getLastComp());
+					
+					pstmt4.setString(1, bean.getLstcmp().getExp());
+					pstmt4.setString(2, bean.getLstcmp().getLastComp());
+					pstmt4.setString(3, bean.getLstcmp().getId());
 
 
-					pstmt5.setString(1, bean.getComp().getId());
-					pstmt5.setString(2, bean.getComp().getDesignation());
-					pstmt5.setDate(3, bean.getComp().getDoj());
-					pstmt5.setLong(4, bean.getComp().getCtc());
+					
+					pstmt5.setString(1, bean.getComp().getDesignation());
+					pstmt5.setDate(2, bean.getComp().getDoj());
+					pstmt5.setLong(3, bean.getComp().getCtc());
+					pstmt5.setString(4, bean.getComp().getId());
 
 					int c1 = pstmt1.executeUpdate();
 					System.out.println(c1);
