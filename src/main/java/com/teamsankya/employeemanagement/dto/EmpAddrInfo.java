@@ -6,8 +6,6 @@ import com.teamsankya.employeemanegement.controller.CreateEmployeeServlet;
 
 public class EmpAddrInfo {
 
-	final static Logger logger = Logger.getLogger(EmpAddrInfo.class);
-
 	private String id;
 	private String addr1;
 	private String addr2;
@@ -16,7 +14,6 @@ public class EmpAddrInfo {
 
 	public String getId() {
 
-		logger.info("generating getters and setters method for employee address table");
 		return id;
 	}
 
