@@ -24,7 +24,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
 	final static Logger logger = Logger.getLogger(UpdateEmployeeServlet.class);
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String eid =req.getParameter("eid");
 		
 		logger.debug("update employee servlet");

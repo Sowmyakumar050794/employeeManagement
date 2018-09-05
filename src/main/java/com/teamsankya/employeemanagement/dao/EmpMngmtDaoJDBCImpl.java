@@ -96,23 +96,25 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 					.getConnection("jdbc:mysql://localhost:3306/employee_management?user=root&password=root");
 					PreparedStatement pstmt1 = con
 							.prepareStatement("SELECT * FROM employeebasic_info bi, employeeaddress_info ai,\r\n"
-									+ "				employeepersonal_info pi, employeelastcompany_info lci,\r\n"
-									+ "				employeecompany_info ci WHERE bi.eid=ai.eid and ai.eid=pi.eid and pi.eid=lci.eid\r\n"
-									+ "				and lci.eid=ci.eid and (bi.eid like'%?%' or bi.fname like'%?%' or bi.lname like'%?%' \r\n"
-									+ "				or ci.designation like'%?%' or pi.email like'%?%' or pi.mob_num like'%?%');");) {
+									+ "	employeepersonal_info pi, employeelastcompany_info lci,\r\n"
+									+ "	employeecompany_info ci WHERE bi.eid=ai.eid and ai.eid=pi.eid and pi.eid=lci.eid"
+									+ "	and lci.eid=ci.eid and (bi.eid like ? or bi.fname like ? or bi.lname like ? "
+									+ "	or ci.designation like ? or pi.email like ? or pi.mob_num like ?);");) {
 
-				pstmt1.setString(1, id);
-				pstmt1.setString(2, id);
-				pstmt1.setString(3, id);
-				pstmt1.setString(4, id);
-				pstmt1.setString(5, id);
-				pstmt1.setString(6, id);
+				pstmt1.setString(1, "%"+id+"%");
+				pstmt1.setString(2, "%"+id+"%");
+				pstmt1.setString(3, "%"+id+"%");
+				pstmt1.setString(4, "%"+id+"%");
+				pstmt1.setString(5, "%"+id+"%");
+				pstmt1.setString(6, "%"+id+"%");
 				try (ResultSet rs = pstmt1.executeQuery()) {
 					if (rs.next()) {
 						System.out.println("Employee found");
-						info.setFname(rs.getString("fname"));
+						
 						info.setId(id);
-						info.setLname(rs.getString("fname"));
+						info.setId(rs.getString("eid"));
+						info.setFname(rs.getString("fname"));
+						info.setLname(rs.getString("lname"));
 
 						addr.setId(id);
 						addr.setAddr1(rs.getString("addr1"));
@@ -174,29 +176,29 @@ public class EmpMngmtDaoJDBCImpl implements EmployeeManagementDAO {
 					PreparedStatement pstmt5 = con.prepareStatement(
 							"UPDATE employeecompany_info SET DESIGNATION=?,DATE_OF_JOIN=?,CTC=? WHERE EID=?");) {
 
-				pstmt1.setString(1, bean.getBasic().getId());
-				pstmt1.setString(2, bean.getBasic().getFname());
-				pstmt1.setString(3, bean.getBasic().getLname());
+				pstmt1.setString(3, id);
+				pstmt1.setString(1, bean.getBasic().getFname());
+				pstmt1.setString(2, bean.getBasic().getLname());
 
-				pstmt2.setString(1, bean.getAddr().getId());
-				pstmt2.setString(2, bean.getAddr().getAddr1());
-				pstmt2.setString(3, bean.getAddr().getAddr2());
-				pstmt2.setString(4, bean.getAddr().getCity());
-				pstmt2.setInt(5, bean.getAddr().getPincode());
+				pstmt2.setString(5, id);
+				pstmt2.setString(1, bean.getAddr().getAddr1());
+				pstmt2.setString(2, bean.getAddr().getAddr2());
+				pstmt2.setString(3, bean.getAddr().getCity());
+				pstmt2.setInt(4, bean.getAddr().getPincode());
 
-				pstmt3.setString(1, bean.getPersonal().getId());
-				pstmt3.setString(2, bean.getPersonal().getEmail());
-				pstmt3.setLong(3, bean.getPersonal().getCellNo());
-				pstmt3.setDate(4, bean.getPersonal().getDob());
+				pstmt3.setString(4, id);
+				pstmt3.setString(1, bean.getPersonal().getEmail());
+				pstmt3.setLong(2, bean.getPersonal().getCellNo());
+				pstmt3.setDate(3, bean.getPersonal().getDob());
 
-				pstmt4.setString(1, bean.getLstcmp().getId());
-				pstmt4.setString(2, bean.getLstcmp().getExp());
-				pstmt4.setString(3, bean.getLstcmp().getLastComp());
+				pstmt4.setString(3, id);
+				pstmt4.setString(1, bean.getLstcmp().getExp());
+				pstmt4.setString(2, bean.getLstcmp().getLastComp());
 
-				pstmt5.setString(1, bean.getComp().getId());
-				pstmt5.setString(2, bean.getComp().getDesignation());
-				pstmt5.setDate(3, bean.getComp().getDoj());
-				pstmt5.setLong(4, bean.getComp().getCtc());
+				pstmt5.setString(4, id);
+				pstmt5.setString(1, bean.getComp().getDesignation());
+				pstmt5.setDate(2, bean.getComp().getDoj());
+				pstmt5.setLong(3, bean.getComp().getCtc());
 
 				int c1 = pstmt1.executeUpdate();
 				System.out.println(c1);
